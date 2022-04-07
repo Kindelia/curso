@@ -1,0 +1,162 @@
+Bool
+
+  Bool.True
+  Bool.False
+  Bool.Not
+  Bool.And
+  Bool.Or
+  Bool.Equal
+  Bool.If
+
+Pair #containers
+
+  Pair
+  Pair.Swap
+  Pair.Fst
+  Pair.Snd
+  Pair.Fst.Set
+  Pair.Snd.Set
+
+Maybe
+
+  None
+  Some
+  Maybe.Default
+
+Numbers
+
+  (U32)
+  (+)  (-)  (*)  (/)
+  (%)  (&)  (|)  (^)
+  (<<) (>>) (<=) (<)
+  (==) (>=) (>)  (!=)
+
+Nat #recursion
+
+  Zero
+  Succ
+  Nat.Double
+  Nat.Half
+  Nat.Add
+  Nat.Mul
+  Nat.Ltn
+  Nat.Lte
+  Nat.Eql
+  Nat.Gte
+  Nat.Gtn
+
+Cmp
+
+  Lt
+  Eq
+  Gt
+  Nat.Cmp
+
+Bits
+
+  End
+  B0
+  B1
+  Bits.Inc
+  Bits.Dec
+  Bits.Add
+
+List
+
+  Nil
+  Cons
+  List.Head
+  List.Tail
+  List.At
+  List.At.Set
+  List.Slice
+  List.Reverse
+
+Strings #utf8
+
+  Char.IsUpper
+  Char.IsLower
+
+  StrNil
+  StrCons
+  String.Find
+  String.Slice
+
+  Bool.Show
+  ...
+  Nat.Show
+  ...
+
+Lambdas
+
+  Lam.Id
+  Lam.Const
+  Lam.Comp
+
+High-Order Functions
+
+  Pair.Fst.Map
+  Pair.Snd.Map
+  Pair.At.Set
+
+  Maybe.Map
+
+  ...
+
+  List.Map
+  List.Find
+
+Case-Of
+
+  Bool.Case
+  Pair.Case
+  Nat.Case
+  Bits.Case
+  Maybe.Case
+  List.Case
+  ... funções anteriores usando Case-Of ...
+
+Algoritmos de lista
+
+  List.Sum
+  List.Mul
+  List.Length
+  List.Filter
+
+Folding
+
+  List.Fold
+  ... funções anteriores usando Fold ...
+
+** aqui o curso começa a ficar hardcore **
+
+Parsing
+
+  ... usando a maneira "estúpida" ...
+
+Monads
+
+  ... Maybe ...
+  ... State ...
+  ... List ...
+  ... Parser ...
+
+Lambda Encodings
+
+  scott
+    ... tipos anteriores λ-encoded ...
+    ... algoritmos anteriores λ-encoded ...
+    ... varlen functions ...
+    ... λ-encoded tuples ...
+  church
+    ... church encodings (Nat, List) ...
+
+Language: Arithmetic
+
+  ... parser, stringifier, evaluator ...
+
+...???????
+
+Language: λ-calculus
+
+  ... parser, stringifier, evaluator ...

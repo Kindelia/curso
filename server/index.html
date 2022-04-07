@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: monaco, Consolas, monospace;
+        box-sizing: border-box;
+      }
+      body {
+        line-height: 1;
+      }
+      #main {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 100%;
+      }
+      #left {
+        width: 50%;
+      }
+      #right {
+        width: 50%;
+      }
+      #problem {
+        border: 1px solid black;
+        overflow-x: scroll;
+        padding: 8px;
+        width: 100%;
+        height: calc(100% - 42px);
+        background: #FFFFFF;
+      }
+      #copy {
+        width: 100%;
+        height: 40px;
+        border: 1px solid black;
+        background: #F0F0FF;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #answer {
+        border: 1px solid black;
+        width: 100%;
+        height: calc(100% - 42px);
+        outline: none;
+        padding: 8px;
+        background: #F0F0F0;
+      }
+      #submit {
+        width: 100%;
+        height: 40px;
+        border: 1px solid black;
+        background: #F0FFF0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script>
+      function answer() {
+        var answer = document.getElementById("answer").value;
+        console.log(answer);
+        fetch(window.location.href + "answer", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({answer}),
+        }).then(res => res.json())
+          .then(data => {
+            if (data && data.correct) {
+              alert("Correto.");
+            } else {
+              alert("Errado.");
+            }
+          });
+      }
+
+      function get_problem() {
+        fetch(window.location.href + "problem")
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("problem").innerText = data;
+          });
+      }
+
+      function copy() {
+        var copyText = document.getElementById("problem");
+        copyText.select();
+        copyText.setSelectionRange(0, Infinity);
+        navigator.clipboard.writeText(copyText.value);
+      }
+
+      setInterval(() => get_problem(), 2000);
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="left">
+        <pre id="problem"></pre>
+        <div id="copy" onclick="copy()">Copiar</div>
+      </div>
+      <div id="right">
+        <textarea id="answer"></textarea>
+        <div id="submit" onclick="answer()">Enviar</div>
+      </div>
+    </div>
+  </body>
+</html>
